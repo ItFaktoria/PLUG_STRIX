@@ -1,0 +1,26 @@
+{
+  "name": "faktoria/magento2-payment-method",
+  "require": {
+    "php": "~7.1||~7.3||~8.1",
+    "slowprog/composer-copy-file": "0.3.3"
+  },
+  "description": "Faktoria Magento2 Payment Method",
+  "type": "magento2-module",
+  "version": "dev-1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "src/Core/registration.php"
+    ],
+    "psr-4": {
+      "Faktoria\\Core\\": "src/Core"
+    }
+  },
+  "archive" : {
+    "exlude": [
+      ".gitlab-ci.yml"
+    ]
+  }
+}

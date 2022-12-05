@@ -1,0 +1,35 @@
+variables:
+  RUNNER_TAG: 'ci-v2'
+  STATIC_TEST: 'true'
+  UNIT_TEST: 'false'
+  INTEGRATION_TEST: 'false'
+
+include:
+  - project: 'gitlab-ci/ci-modules'
+    file: '.modules-gitlab-ci.yml'
+  - remote: 'https://gitlab.strix.app/api/v4/projects/66/repository/files/magento%2F.magento-php-parallel.yml/raw?private_token=bJwwk4yhs_pn5MfQeQQd&fmt=.yml'
+
+.parallel:
+  parallel:
+    matrix:
+      - MAGENTO_VERSION: ['2.4.5']
+        PHP_VERSION: ['8.1']
+        MYSQL_VERSION: ['mysql:8.0.29']
+        RABBITMQ_VERSION: ['rabbitmq:3.9.25']
+        ELASTICSEARCH_VERSION: ['elasticsearch:7.17.7']
+        REDIS_VERSION: ['redis:6.2.7']
+
+test:install:module:
+  parallel: !reference [.parallel,parallel]
+
+test:static:
+  parallel: !reference [.parallel,parallel]
+
+test:unit:
+  parallel: !reference [.parallel,parallel]
+
+test:integration:
+  parallel: !reference [.parallel,parallel]
+
+publish:
+  when: manual
