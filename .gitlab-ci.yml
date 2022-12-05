@@ -1,6 +1,6 @@
 variables:
   RUNNER_TAG: 'ci-v2'
-  STATIC_TEST: 'true'
+  STATIC_TEST: 'false'
   UNIT_TEST: 'false'
   INTEGRATION_TEST: 'false'
 
