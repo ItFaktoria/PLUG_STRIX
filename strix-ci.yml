@@ -1,0 +1,4 @@
+tests:
+  static:
+    phpcs:
+      commenting_rules: false

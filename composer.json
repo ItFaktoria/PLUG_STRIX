@@ -19,7 +19,9 @@
   },
   "archive" : {
     "exlude": [
-      ".gitlab-ci.yml"
+      ".gitlab-ci.yml",
+      ".gitattributes",
+      "strix-ci.yml"
     ]
   }
 }

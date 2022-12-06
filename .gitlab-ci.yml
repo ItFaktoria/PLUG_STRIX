@@ -1,13 +1,16 @@
 variables:
-  RUNNER_TAG: 'ci-v2'
-  STATIC_TEST: 'false'
+  RUNNER_TAG: 'faktoria'
+  STATIC_TEST: 'true'
   UNIT_TEST: 'false'
   INTEGRATION_TEST: 'false'
+  INSTALL_STRIX_CI_MODULE: 'true'
+  MODULE_PATH: src
 
 include:
   - project: 'gitlab-ci/ci-modules'
-    file: '.modules-gitlab-ci.yml'
-  - remote: 'https://gitlab.strix.app/api/v4/projects/66/repository/files/magento%2F.magento-php-parallel.yml/raw?private_token=bJwwk4yhs_pn5MfQeQQd&fmt=.yml'
+    file: 'modules/.modules-gitlab-ci.yml'
+  - project: 'gitlab-ci/ci-modules'
+    file: 'magento/.magento-php-parallel.yml'
 
 .parallel:
   parallel:
