@@ -5,16 +5,18 @@
   },
   "description": "Faktoria Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.0.0",
+  "version": "dev-1.0.1",
   "license": [
     "proprietary"
   ],
   "autoload": {
     "files": [
-      "src/Core/registration.php"
+      "src/Core/registration.php",
+      "src/CoreAdminUi/registration.php"
     ],
     "psr-4": {
-      "Faktoria\\Core\\": "src/Core"
+      "Faktoria\\Core\\": "src/Core",
+      "Faktoria\\CoreAdminUi\\": "src/CoreAdminUi"
     }
   },
   "archive" : {
