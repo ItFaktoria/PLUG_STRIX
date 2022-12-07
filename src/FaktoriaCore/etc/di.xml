@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="FaktoriaPayment" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="string">faktoria_payment</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">Magento\Payment\Block\ConfigurableInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">FaktoriaValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">FaktoriaCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">FaktoriaConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">FaktoriaConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">faktoria_payment</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">FaktoriaAuthorizeCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">FaktoriaAuthorizationRequest</argument>
+            <argument name="handler" xsi:type="object">FaktoriaResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">Faktoria\FaktoriaCore\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Faktoria\FaktoriaCore\Gateway\Validator\ResponseCreateValidator</argument>
+            <argument name="client" xsi:type="object">Faktoria\FaktoriaCore\Gateway\Http\FaktoriaClient</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaAuthorizationRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="transaction" xsi:type="string">Faktoria\FaktoriaCore\Gateway\Request\AuthorizationRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="txnid" xsi:type="string">Faktoria\FaktoriaCore\Gateway\Response\TxnIdResponseHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="faktoria" sortOrder="900" class="faktoria-tab">
-            <label>Faktoria</label>
-        </tab>
-        <section id="faktoria_general" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="10" translate="label">
-            <tab>faktoria</tab>
-            <label>General</label>
-            <resource>Faktoria_FaktoriaAdminUi::config</resource>
-            <group id="faktoria_general" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20" translate="label">
-                <field id="is_sandbox" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <config_path>faktoria/general/is_sandbox</config_path>
-                    <label>Sandbox mode?</label>
+        <section id="payment" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Faktoria_FaktoriaAdminUi::faktoria_payment</resource>
+            <group id="faktoria_payment" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Faktoria</label>
+                <field id="is_active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <config_path>faktoria_payment/general/is_active</config_path>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="api_key" translate="label" type="password" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Api key</label>
-                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-                    <config_path>faktoria/general/api_key</config_path>
-                </field>
-                <field id="merchant_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Merchant ID</label>
-                    <config_path>faktoria/general/merchant_id</config_path>
-                </field>
-                <field id="contract_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Contract ID</label>
-                    <config_path>faktoria/general/contract_id</config_path>
-                </field>
+                <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>General</label>
+                    <attribute type="expanded">1</attribute>
+                    <field id="is_sandbox" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>faktoria_payment/general/is_sandbox</config_path>
+                        <label>Sandbox mode?</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Api key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <config_path>faktoria_payment/general/api_key</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="merchant_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Merchant ID</label>
+                        <config_path>faktoria_payment/general/merchant_id</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="contract_id" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Contract ID</label>
+                        <config_path>faktoria_payment/general/contract_id</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
+                </group>
             </group>
         </section>
     </system>
