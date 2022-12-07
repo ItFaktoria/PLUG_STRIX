@@ -8,6 +8,7 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 
 interface FaktoriaConfigProviderInterface
 {
+    public function isActive(int $storeId): bool;
     public function isSandbox(int $storeId): bool;
     public function getApiKey(int $storeId): string;
     public function getMerchantId(int $storeId): string;

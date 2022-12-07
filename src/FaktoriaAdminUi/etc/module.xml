@@ -3,6 +3,7 @@
     <module name="Faktoria_FaktoriaAdminUi">
         <sequence>
             <module name="Faktoria_FaktoriaApi"/>
+            <module name="Faktoria_FaktoriaCore"/>
         </sequence>
     </module>
 </config>

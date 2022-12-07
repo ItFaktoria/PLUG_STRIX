@@ -10,10 +10,11 @@ use Magento\Framework\Encryption\EncryptorInterface;
 
 class FaktoriaConfigProvider implements FaktoriaConfigProviderInterface
 {
-    private const IS_SANDBOX = 'faktoria/general/is_sandbox';
-    private const API_KEY = 'faktoria/general/api_key';
-    private const MERCHANT_ID = 'faktoria/general/merchant_id';
-    private const CONTRACT_ID = 'faktoria/general/contract_id';
+    private const IS_ACTIVE = 'faktoria_payment/general/is_active';
+    private const IS_SANDBOX = 'faktoria_payment/general/is_sandbox';
+    private const API_KEY = 'faktoria_payment/general/api_key';
+    private const MERCHANT_ID = 'faktoria_payment/general/merchant_id';
+    private const CONTRACT_ID = 'faktoria_payment/general/contract_id';
 
     /**
      * @var ScopeConfigInterface
@@ -29,6 +30,11 @@ class FaktoriaConfigProvider implements FaktoriaConfigProviderInterface
     {
         $this->scopeConfig = $scopeConfig;
         $this->encryptor = $encryptor;
+    }
+
+    public function isActive(int $storeId): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::IS_ACTIVE, ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $storeId);
     }
 
     public function isSandbox(int $storeId): bool
