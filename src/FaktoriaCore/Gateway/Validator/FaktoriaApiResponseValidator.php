@@ -17,7 +17,7 @@ class FaktoriaApiResponseValidator extends AbstractValidator
         }
         $response = $validationSubject['response'];
         if ($this->isSuccessfulTransaction($response)) {
-            return $this->createResult(true, []);
+            return $this->createResult(true);
         }
 
         return $this->createResult(false, [__('Faktoria rejected the transaction.')]);

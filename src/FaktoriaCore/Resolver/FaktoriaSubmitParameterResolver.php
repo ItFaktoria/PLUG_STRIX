@@ -7,8 +7,6 @@ namespace Faktoria\FaktoriaCore\Resolver;
 use Faktoria\FaktoriaApi\Api\FaktoriaConnectionConfigProviderInterface;
 use Faktoria\FaktoriaApi\Api\FaktoriaSubmitParameterResolverInterface;
 use Magento\Framework\UrlInterface;
-use Magento\Payment\Gateway\Data\OrderAdapterInterface;
-use Magento\Payment\Model\InfoInterface;
 
 class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolverInterface
 {
@@ -39,7 +37,7 @@ class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolver
             ],
             [
                 'name' => 'FKT_FPAY_IN_TRANSACTION.AMMOUNT',
-                'value' => (string)$grandTotalAmount
+                'value' => number_format($grandTotalAmount, 2, ',', '')
             ],
             [
                 'name' => 'FKT_FPAY_IN_TRANSACTION.CURRENCY',

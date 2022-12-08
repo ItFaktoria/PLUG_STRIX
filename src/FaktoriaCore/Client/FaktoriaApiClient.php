@@ -60,7 +60,7 @@ class FaktoriaApiClient implements FaktoriaApiClientInterface
         try {
             $result = $client->request(
                 'POST',
-                $this->getUri('Submit'),
+                $this->getUri(),
                 [
                     'headers' => [
                         'Ocp-Apim-Subscription-Key' => $this->getAuthorization()
@@ -93,7 +93,7 @@ class FaktoriaApiClient implements FaktoriaApiClientInterface
     /**
      * @throws NoSuchEntityException
      */
-    private function getUri(string $action): string
+    private function getUri(): string
     {
         $storeId = (int)$this->storeManager->getStore()->getId();
         $uri = self::PRODUCTION_URI;
@@ -101,7 +101,7 @@ class FaktoriaApiClient implements FaktoriaApiClientInterface
             $uri = self::SANDBOX_URI;
         }
 
-        return sprintf('%s/%s', $uri, $action);
+        return sprintf('%s/%s', $uri, 'Submit');
     }
 
     /**

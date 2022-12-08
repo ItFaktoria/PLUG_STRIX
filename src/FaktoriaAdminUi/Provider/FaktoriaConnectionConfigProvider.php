@@ -10,7 +10,7 @@ use Magento\Framework\Encryption\EncryptorInterface;
 
 class FaktoriaConnectionConfigProvider implements FaktoriaConnectionConfigProviderInterface
 {
-    private const IS_ACTIVE = 'faktoria_payment/connection/is_active';
+    private const IS_ACTIVE = 'faktoria_payment/general/is_active';
     private const IS_SANDBOX = 'faktoria_payment/connection/is_sandbox';
     private const API_KEY = 'faktoria_payment/connection/api_key';
     private const SANDBOX_API_KEY = 'faktoria_payment/connection/sandbox_api_key';

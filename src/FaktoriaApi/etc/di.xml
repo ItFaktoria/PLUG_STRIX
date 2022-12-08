@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaConnectionConfigProviderInterface" type="Faktoria\FaktoriaAdminUi\Provider\FaktoriaConnectionConfigProvider"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaCartConfigProviderInterface" type="Faktoria\FaktoriaAdminUi\Provider\FaktoriaCartConfigProvider"/>
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaSubmitParameterResolverInterface" type="Faktoria\FaktoriaCore\Resolver\FaktoriaSubmitParameterResolver"/>
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaApiClientInterface" type="Faktoria\FaktoriaCore\Client\FaktoriaApiClient"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaNotifyStatusMessageResolverInterface" type="Faktoria\FaktoriaCore\Resolver\FaktoriaNotifyStatusMessageResolver"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaNotifyOrderStatusProviderInterface" type="Faktoria\FaktoriaCore\Provider\FaktoriaNotifyOrderStatusProvider"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaOrderChangeStatusServiceInterface" type="Faktoria\FaktoriaCore\Service\FaktoriaOrderChangeStatusService"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaPaymentGrandTotalThresholdServiceInterface" type="Faktoria\FaktoriaCore\Service\FaktoriaPaymentGrandTotalThresholdService"/>
 </config>

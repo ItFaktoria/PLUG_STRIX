@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Faktoria\FaktoriaApi\Api;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
 interface FaktoriaConnectionConfigProviderInterface
 {
     public function isActive(int $storeId): bool;
