@@ -10,11 +10,11 @@
                     <config_path>faktoria_payment/general/is_active</config_path>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>General</label>
+                <group id="connection" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Connection</label>
                     <attribute type="expanded">1</attribute>
                     <field id="is_sandbox" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <config_path>faktoria_payment/general/is_sandbox</config_path>
+                        <config_path>faktoria_payment/connection/is_sandbox</config_path>
                         <label>Sandbox mode?</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         <depends>
@@ -24,21 +24,65 @@
                     <field id="api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Api key</label>
                         <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
-                        <config_path>faktoria_payment/general/api_key</config_path>
+                        <config_path>faktoria_payment/connection/api_key</config_path>
                         <depends>
                             <field id="is_active">1</field>
+                            <field id="is_sandbox">0</field>
+                        </depends>
+                    </field>
+                    <field id="sandbox_api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Sandbox Api key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <config_path>faktoria_payment/connection/sandbox_api_key</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                            <field id="is_sandbox">1</field>
                         </depends>
                     </field>
                     <field id="merchant_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Merchant ID</label>
-                        <config_path>faktoria_payment/general/merchant_id</config_path>
+                        <config_path>faktoria_payment/connection/merchant_id</config_path>
                         <depends>
                             <field id="is_active">1</field>
                         </depends>
                     </field>
                     <field id="contract_id" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Contract ID</label>
-                        <config_path>faktoria_payment/general/contract_id</config_path>
+                        <config_path>faktoria_payment/connection/contract_id</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="return_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Return URL</label>
+                        <config_path>faktoria_payment/connection/return_url</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="cancel_url" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cancel URL</label>
+                        <config_path>faktoria_payment/connection/cancel_url</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
+                </group>
+                <group id="cart" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cart</label>
+                    <field id="min_order_total" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Order Total</label>
+                        <config_path>faktoria_payment/cart/min_order_total</config_path>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="max_order_total" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Order Total</label>
+                        <config_path>faktoria_payment/cart/max_order_total</config_path>
                         <depends>
                             <field id="is_active">1</field>
                         </depends>
