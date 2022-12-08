@@ -8,27 +8,24 @@ use InvalidArgumentException;
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterface;
 
-class ResponseCreateValidator extends AbstractValidator
+class FaktoriaApiResponseValidator extends AbstractValidator
 {
-    private const VALIDATION_SUBJECT_RESPONSE = 'response';
-    
     public function validate(array $validationSubject): ResultInterface
     {
-        if (!isset($validationSubject[static::VALIDATION_SUBJECT_RESPONSE]) ||
-            !is_array($validationSubject[static::VALIDATION_SUBJECT_RESPONSE])) {
+        if (!isset($validationSubject['response']) || !is_array($validationSubject['response'])) {
             throw new InvalidArgumentException('Response does not exist');
         }
-
-        $response = $validationSubject[static::VALIDATION_SUBJECT_RESPONSE];
+        $response = $validationSubject['response'];
         if ($this->isSuccessfulTransaction($response)) {
             return $this->createResult(true, []);
         }
 
         return $this->createResult(false, [__('Faktoria rejected the transaction.')]);
     }
-    
+
     private function isSuccessfulTransaction(array $response): bool
     {
-        return false;
+        return array_key_exists('applicationNumber', $response) && array_key_exists('fieldInfos', $response) &&
+            isset($response['fieldInfos'][0]);
     }
 }

@@ -1,11 +1,13 @@
 {
   "name": "faktoria/magento2-payment-method",
   "require": {
-    "php": "~7.1||~7.3||~8.1"
+    "php": "~7.1||~7.3||~8.1",
+    "guzzlehttp/guzzle": "*",
+    "ext-json": "*"
   },
   "description": "Faktoria Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.0.2",
+  "version": "dev-1.0.4",
   "license": [
     "proprietary"
   ],
@@ -14,13 +16,15 @@
       "src/FaktoriaAdminUi/registration.php",
       "src/FaktoriaApi/registration.php",
       "src/FaktoriaCore/registration.php",
-      "src/FaktoriaFrontendUi/registration.php"
+      "src/FaktoriaFrontendUi/registration.php",
+      "src/FaktoriaWebApi/registration.php"
     ],
     "psr-4": {
       "Faktoria\\FaktoriaAdminUi\\": "src/FaktoriaAdminUi",
       "Faktoria\\FaktoriaApi\\": "src/FaktoriaApi",
       "Faktoria\\FaktoriaCore\\": "src/FaktoriaCore",
-      "Faktoria\\FaktoriaFrontendUi\\": "src/FaktoriaFrontendUi"
+      "Faktoria\\FaktoriaFrontendUi\\": "src/FaktoriaFrontendUi",
+      "Faktoria\\FaktoriaWebApi\\": "src/FaktoriaWebApi"
     }
   },
   "archive" : {
