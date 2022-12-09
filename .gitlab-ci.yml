@@ -5,6 +5,7 @@ variables:
   INTEGRATION_TEST: 'false'
   INSTALL_STRIX_CI_MODULE: 'true'
   MODULE_PATH: src
+  RUN_ON_TAGS: 'false'
 
 include:
   - project: 'gitlab-ci/ci-modules'
