@@ -7,7 +7,7 @@
   },
   "description": "Faktoria Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.0.5",
+  "version": "dev-1.0.4",
   "license": [
     "proprietary"
   ],
