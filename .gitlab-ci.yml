@@ -1,5 +1,5 @@
 variables:
-  RUNNER_TAG: 'faktoriaV2'
+  RUNNER_TAG: 'ci-v2'
   STATIC_TEST: 'true'
   UNIT_TEST: 'false'
   INTEGRATION_TEST: 'false'
