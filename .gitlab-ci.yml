@@ -8,31 +8,7 @@ variables:
 
 include:
   - project: 'gitlab-ci/ci-modules'
-    file: 'modules/.modules-gitlab-ci.yml'
-  - project: 'gitlab-ci/ci-modules'
-    file: 'magento/.magento-php-parallel.yml'
-
-.parallel:
-  parallel:
-    matrix:
-      - MAGENTO_VERSION: ['2.4.5']
-        PHP_VERSION: ['8.1']
-        MYSQL_VERSION: ['mysql:8.0.29']
-        RABBITMQ_VERSION: ['rabbitmq:3.9.25']
-        ELASTICSEARCH_VERSION: ['elasticsearch:7.17.7']
-        REDIS_VERSION: ['redis:6.2.7']
-
-test:install:module:
-  parallel: !reference [.parallel,parallel]
-
-test:static:
-  parallel: !reference [.parallel,parallel]
-
-test:unit:
-  parallel: !reference [.parallel,parallel]
-
-test:integration:
-  parallel: !reference [.parallel,parallel]
+    file: 'modules/.external-modules-gitlab-ci.yml'
 
 publish:
   when: manual
