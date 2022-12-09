@@ -58,6 +58,7 @@ class FaktoriaApiSubmitRequest implements BuilderInterface
             return $this->faktoriaSubmitParameterResolver->resolve(
                 $this->checkoutSession->getQuote()->getReservedOrderId(),
                 (float)$order->getGrandTotalAmount(),
+                $this->checkoutSession->getQuote()->getBillingAddress()->getVatId(),
                 (int)$order->getStoreId()
             );
         } catch (Throwable $e) {

@@ -28,7 +28,7 @@ class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolver
         $this->urlBuilder = $urlBuilder;
     }
 
-    public function resolve(string $reservedOrderId, float $grandTotalAmount, int $storeId): array
+    public function resolve(string $reservedOrderId, float $grandTotalAmount, ?string $vatId, int $storeId): array
     {
         $toSet = [
             [
@@ -71,6 +71,12 @@ class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolver
         $toGet = [
             'FKT_FPAY_IN_URL.URL_APPLICATION'
         ];
+        if (!empty($vatId)) {
+            $toSet[] = [
+                'name' => 'FKT_FPAY_IN_TRANSACTION.BUYER_ID',
+                'value' => $vatId
+            ];
+        }
 
         return ['toSet' => $toSet, 'toGet' => $toGet];
     }

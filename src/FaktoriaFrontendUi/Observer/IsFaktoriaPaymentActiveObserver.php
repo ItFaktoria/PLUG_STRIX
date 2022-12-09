@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Faktoria\FaktoriaFrontendUi\Observer;
 
+use Faktoria\FaktoriaApi\Api\FaktoriaPaymentCurrencyCheckServiceInterface;
 use Faktoria\FaktoriaApi\Api\FaktoriaPaymentGrandTotalThresholdServiceInterface;
 use Magento\Framework\DataObject;
 use Magento\Framework\Event\Observer;
@@ -18,10 +19,17 @@ class IsFaktoriaPaymentActiveObserver implements ObserverInterface
      */
     private $faktoriaPaymentGrandTotalThresholdService;
 
+    /**
+     * @var FaktoriaPaymentCurrencyCheckServiceInterface
+     */
+    private $faktoriaPaymentCurrencyCheckService;
+
     public function __construct(
-        FaktoriaPaymentGrandTotalThresholdServiceInterface $faktoriaPaymentGrandTotalThresholdService
+        FaktoriaPaymentGrandTotalThresholdServiceInterface $faktoriaPaymentGrandTotalThresholdService,
+        FaktoriaPaymentCurrencyCheckServiceInterface $faktoriaPaymentCurrencyCheckService
     ) {
         $this->faktoriaPaymentGrandTotalThresholdService = $faktoriaPaymentGrandTotalThresholdService;
+        $this->faktoriaPaymentCurrencyCheckService = $faktoriaPaymentCurrencyCheckService;
     }
 
     public function execute(Observer $observer): void
@@ -35,10 +43,13 @@ class IsFaktoriaPaymentActiveObserver implements ObserverInterface
         if ($methodInstance->getCode() !== 'faktoria_payment' || $checkResult->getData('is_available') === false) {
             return;
         }
-        $isAvailable = $this->faktoriaPaymentGrandTotalThresholdService->isAvailableByConfigurationThreshold(
+        $isAvailableTotal = $this->faktoriaPaymentGrandTotalThresholdService->isAvailableByConfigurationThreshold(
             (float)$quote->getGrandTotal(),
             (int)$quote->getStoreId()
         );
-        $checkResult->setData('is_available', $isAvailable);
+        $isAvailableCurrency = $this->faktoriaPaymentCurrencyCheckService->isAvailableByCurrency(
+            (string)$quote->getCurrency()->getQuoteCurrencyCode()
+        );
+        $checkResult->setData('is_available', $isAvailableTotal && $isAvailableCurrency);
     }
 }

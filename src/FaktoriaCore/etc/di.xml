@@ -4,9 +4,16 @@
         <arguments>
             <argument name="code" xsi:type="string">faktoria_payment</argument>
             <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
-            <argument name="infoBlockType" xsi:type="string">Magento\Payment\Block\ConfigurableInfo</argument>
+            <argument name="infoBlockType" xsi:type="string">FaktoriaPaymentInfo</argument>
             <argument name="valueHandlerPool" xsi:type="object">FaktoriaValueHandlerPool</argument>
             <argument name="commandPool" xsi:type="object">FaktoriaCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="FaktoriaPaymentInfo" type="Magento\Payment\Block\ConfigurableInfo">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="methodCode" xsi:type="string">faktoria_payment</item>
+            </argument>
         </arguments>
     </virtualType>
     <virtualType name="FaktoriaValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">

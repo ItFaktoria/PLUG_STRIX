@@ -8,4 +8,5 @@
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaNotifyOrderStatusProviderInterface" type="Faktoria\FaktoriaCore\Provider\FaktoriaNotifyOrderStatusProvider"/>
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaOrderChangeStatusServiceInterface" type="Faktoria\FaktoriaCore\Service\FaktoriaOrderChangeStatusService"/>
     <preference for="Faktoria\FaktoriaApi\Api\FaktoriaPaymentGrandTotalThresholdServiceInterface" type="Faktoria\FaktoriaCore\Service\FaktoriaPaymentGrandTotalThresholdService"/>
+    <preference for="Faktoria\FaktoriaApi\Api\FaktoriaPaymentCurrencyCheckServiceInterface" type="Faktoria\FaktoriaCore\Service\FaktoriaPaymentCurrencyCheckService"/>
 </config>
