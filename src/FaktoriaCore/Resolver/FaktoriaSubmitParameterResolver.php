@@ -61,11 +61,7 @@ class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolver
             ],
             [
                 'name' => 'FKT_FPAY_IN_URL.SEND_NOTIFY',
-                'value' => '1'
-            ],
-            [
-                'name' => 'FKT_FPAY_IN_URL.URL_NOTIFY',
-                'value' => $this->urlBuilder->getUrl('')
+                'value' => $this->faktoriaConnectionConfigProvider->isSendNotification($storeId) ? '1' : '0'
             ]
         ];
         $toGet = [
@@ -75,6 +71,12 @@ class FaktoriaSubmitParameterResolver implements FaktoriaSubmitParameterResolver
             $toSet[] = [
                 'name' => 'FKT_FPAY_IN_TRANSACTION.BUYER_ID',
                 'value' => $vatId
+            ];
+        }
+        if ($this->faktoriaConnectionConfigProvider->isSendNotification($storeId)) {
+            $toSet[] = [
+                'name' => 'FKT_FPAY_IN_URL.URL_NOTIFY',
+                'value' => $this->urlBuilder->getUrl('rest/V1/faktoria/notify')
             ];
         }
 

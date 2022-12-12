@@ -30,8 +30,7 @@
   "archive" : {
     "exlude": [
       ".gitlab-ci.yml",
-      ".gitattributes",
-      "strix-ci.yml"
+      ".gitattributes"
     ]
   }
 }

@@ -1,7 +1,7 @@
 variables:
   RUNNER_TAG: 'ci-v2'
   STATIC_TEST: 'true'
-  UNIT_TEST: 'false'
+  UNIT_TEST: 'true'
   INTEGRATION_TEST: 'false'
   INSTALL_STRIX_CI_MODULE: 'true'
   MODULE_PATH: src

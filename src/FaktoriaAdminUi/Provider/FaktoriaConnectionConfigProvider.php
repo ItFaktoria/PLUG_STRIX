@@ -12,6 +12,7 @@ class FaktoriaConnectionConfigProvider implements FaktoriaConnectionConfigProvid
 {
     private const IS_ACTIVE = 'faktoria_payment/general/is_active';
     private const IS_SANDBOX = 'faktoria_payment/connection/is_sandbox';
+    private const IS_SEND_NOTIFICATION = 'faktoria_payment/connection/is_send_notification';
     private const API_KEY = 'faktoria_payment/connection/api_key';
     private const SANDBOX_API_KEY = 'faktoria_payment/connection/sandbox_api_key';
     private const MERCHANT_ID = 'faktoria_payment/connection/merchant_id';
@@ -43,6 +44,11 @@ class FaktoriaConnectionConfigProvider implements FaktoriaConnectionConfigProvid
     public function isSandbox(int $storeId): bool
     {
         return $this->scopeConfig->isSetFlag(self::IS_SANDBOX, ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $storeId);
+    }
+
+    public function isSendNotification(int $storeId): bool
+    {
+        return $this->scopeConfig->isSetFlag(self::IS_SEND_NOTIFICATION, ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $storeId);
     }
 
     public function getApiKey(int $storeId): string
