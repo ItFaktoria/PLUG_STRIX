@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Spingo_SpingoAdminUi::spingo_payment</resource>
+            <group id="spingo_payment" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Spingo</label>
+                <field id="is_active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <config_path>spingo_payment/general/is_active</config_path>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="connection" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Connection</label>
+                    <attribute type="expanded">1</attribute>
+                    <field id="is_sandbox" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <config_path>spingo_payment/connection/is_sandbox</config_path>
+                        <label>Sandbox mode?</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <depends>
+                            <field id="is_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="is_send_notification" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Send notification</label>
+                        <config_path>spingo_payment/connection/is_send_notification</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Api key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <config_path>spingo_payment/connection/api_key</config_path>
+                        <depends>
+                            <field id="is_sandbox">0</field>
+                        </depends>
+                    </field>
+                    <field id="sandbox_api_key" translate="label" type="password" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Sandbox Api key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <config_path>spingo_payment/connection/sandbox_api_key</config_path>
+                        <depends>
+                            <field id="is_sandbox">1</field>
+                        </depends>
+                    </field>
+                    <field id="merchant_id" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Merchant ID</label>
+                        <config_path>spingo_payment/connection/merchant_id</config_path>
+                    </field>
+                    <field id="contract_id" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Contract ID</label>
+                        <config_path>spingo_payment/connection/contract_id</config_path>
+                    </field>
+                    <field id="return_url" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Return URL</label>
+                        <config_path>spingo_payment/connection/return_url</config_path>
+                    </field>
+                    <field id="cancel_url" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Cancel URL</label>
+                        <config_path>spingo_payment/connection/cancel_url</config_path>
+                    </field>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
+                </group>
+                <group id="cart" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cart</label>
+                    <field id="min_order_total" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Minimum Order Total</label>
+                        <config_path>spingo_payment/cart/min_order_total</config_path>
+                    </field>
+                    <field id="max_order_total" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Maximum Order Total</label>
+                        <config_path>spingo_payment/cart/max_order_total</config_path>
+                    </field>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

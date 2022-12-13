@@ -1,2 +1,2 @@
-# Faktoria Magento 2 - payment method
+# Spingo Magento 2 - payment method
  
