@@ -38,7 +38,7 @@ test:integration:
 publish:
   when: manual
 
-deploy:m245p1:
+deploy:
   tags:
     - $RUNNER_TAG
   stage: deploy
@@ -46,6 +46,8 @@ deploy:m245p1:
       matrix:
         - MAGENTO_VERSION: ['m245p1', 'm244p2', 'm243p3', 'm242', 'm241', 'm240', 'm237p3', 'm236', 'm235p2']
   image: gitlab.strix.app:5051/gitlab-ci/magento-ci-images/ci-deployer:6.9
+  variables:
+    GIT_STRATEGY: none
   needs:
     - publish
   before_script:
@@ -60,6 +62,5 @@ deploy:m245p1:
   environment:
     name: $MAGENTO_VERSION
     deployment_tier: production
-  when: manual
   only:
     - tags
