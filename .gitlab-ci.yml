@@ -48,6 +48,7 @@ deploy:m245p1:
   image: gitlab.strix.app:5051/gitlab-ci/magento-ci-images/ci-deployer:6.9
   dependencies: []
   before_script:
+    - if [ -f $DEPLOY_HOSTS ]; then cat $DEPLOY_HOSTS >> deploy-hosts.yml; fi;
     - if [ ! -f "deploy.php" ]; then echo "<?php namespace Deployer; require_once '/app/vendor/strix/deployer/src/recipe/strix-magento2-composer-module.php'; inventory('deploy-hosts.yml');" >> deploy.php; fi;
     - eval $(ssh-agent -s)
     - >-
