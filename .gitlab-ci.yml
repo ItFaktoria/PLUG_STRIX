@@ -46,7 +46,7 @@ deploy:m245p1:
       matrix:
         - MAGENTO_VERSION: ['m245p1', 'm244p2', 'm243p3', 'm242', 'm241', 'm240', 'm237p3', 'm236', 'm235p2']
   image: gitlab.strix.app:5051/gitlab-ci/magento-ci-images/ci-deployer:6.9
-  dependencies:
+  needs:
     - publish
   before_script:
     - if [ -f $DEPLOY_HOSTS ]; then cat $DEPLOY_HOSTS >> deploy-hosts.yml; fi;
