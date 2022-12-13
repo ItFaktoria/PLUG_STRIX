@@ -1,30 +1,30 @@
 {
-  "name": "faktoria/magento2-payment-method",
+  "name": "spingo/magento2-payment-method",
   "require": {
     "php": "~7.1||~7.3||~8.1",
     "guzzlehttp/guzzle": "*",
     "ext-json": "*"
   },
-  "description": "Faktoria Magento2 Payment Method",
+  "description": "Spingo Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.1.0",
+  "version": "dev-1.2.0",
   "license": [
     "proprietary"
   ],
   "autoload": {
     "files": [
-      "src/FaktoriaAdminUi/registration.php",
-      "src/FaktoriaApi/registration.php",
-      "src/FaktoriaCore/registration.php",
-      "src/FaktoriaFrontendUi/registration.php",
-      "src/FaktoriaWebApi/registration.php"
+      "src/SpingoAdminUi/registration.php",
+      "src/SpingoApi/registration.php",
+      "src/SpingoCore/registration.php",
+      "src/SpingoFrontendUi/registration.php",
+      "src/SpingoWebApi/registration.php"
     ],
     "psr-4": {
-      "Faktoria\\FaktoriaAdminUi\\": "src/FaktoriaAdminUi",
-      "Faktoria\\FaktoriaApi\\": "src/FaktoriaApi",
-      "Faktoria\\FaktoriaCore\\": "src/FaktoriaCore",
-      "Faktoria\\FaktoriaFrontendUi\\": "src/FaktoriaFrontendUi",
-      "Faktoria\\FaktoriaWebApi\\": "src/FaktoriaWebApi"
+      "Spingo\\SpingoAdminUi\\": "src/SpingoAdminUi",
+      "Spingo\\SpingoApi\\": "src/SpingoApi",
+      "Spingo\\SpingoCore\\": "src/SpingoCore",
+      "Spingo\\SpingoFrontendUi\\": "src/SpingoFrontendUi",
+      "Spingo\\SpingoWebApi\\": "src/SpingoWebApi"
     }
   },
   "archive" : {
