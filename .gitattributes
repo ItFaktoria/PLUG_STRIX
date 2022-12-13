@@ -1,1 +1,2 @@
 .gitlab-ci.yml export-ignore
+deploy-hosts.yml export-ignore
