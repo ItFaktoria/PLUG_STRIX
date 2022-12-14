@@ -58,12 +58,16 @@ class SpingoApiClient implements SpingoApiClientInterface
     {
         $client = $this->getClient();
         try {
+            $storeId = (int)$this->storeManager->getStore()->getId();
+            if ($this->spingoConnectionConfigProvider->isLogCartRequest($storeId)) {
+                $this->logger->notice(json_encode($params));
+            }
             $result = $client->request(
                 'POST',
-                $this->getUri(),
+                $this->getUri($storeId),
                 [
                     'headers' => [
-                        'Ocp-Apim-Subscription-Key' => $this->getAuthorization()
+                        'Ocp-Apim-Subscription-Key' => $this->getAuthorization($storeId)
                     ],
                     'json' => $params
                 ]
@@ -71,7 +75,7 @@ class SpingoApiClient implements SpingoApiClientInterface
 
             return $result->getBody()->getContents();
         } catch (ClientException | GuzzleException | NoSuchEntityException $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->notice($e->getMessage());
             throw new SpingoApiException(
                 (string)__('Something went wrong with your request. Please try again later.')
             );
@@ -93,9 +97,8 @@ class SpingoApiClient implements SpingoApiClientInterface
     /**
      * @throws NoSuchEntityException
      */
-    private function getUri(): string
+    private function getUri(int $storeId): string
     {
-        $storeId = (int)$this->storeManager->getStore()->getId();
         $uri = self::PRODUCTION_URI;
         if ($this->spingoConnectionConfigProvider->isSandbox($storeId)) {
             $uri = self::SANDBOX_URI;
@@ -107,9 +110,8 @@ class SpingoApiClient implements SpingoApiClientInterface
     /**
      * @throws NoSuchEntityException
      */
-    private function getAuthorization(): string
+    private function getAuthorization(int $storeId): string
     {
-        $storeId = (int)$this->storeManager->getStore()->getId();
         $authorizationKey = $this->spingoConnectionConfigProvider->getApiKey($storeId);
         if ($this->spingoConnectionConfigProvider->isSandbox($storeId)) {
             $authorizationKey = $this->spingoConnectionConfigProvider->getSandboxApiKey($storeId);
@@ -117,7 +119,7 @@ class SpingoApiClient implements SpingoApiClientInterface
         try {
             return $authorizationKey;
         } catch (Throwable $e) {
-            $this->logger->error($e->getMessage());
+            $this->logger->notice($e->getMessage());
 
             return '';
         }

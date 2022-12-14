@@ -15,4 +15,5 @@ interface SpingoConnectionConfigProviderInterface
     public function getContractId(int $storeId): string;
     public function getReturnUrl(int $storeId): string;
     public function getCancelUrl(int $storeId): string;
+    public function isLogCartRequest(int $storeId): bool;
 }

@@ -19,6 +19,7 @@ class SpingoConnectionConfigProvider implements SpingoConnectionConfigProviderIn
     private const CONTRACT_ID = 'spingo_payment/connection/contract_id';
     private const RETURN_URL = 'spingo_payment/connection/return_url';
     private const CANCEL_URL = 'spingo_payment/connection/cancel_url';
+    private const LOG_CART_REQUEST = 'spingo_payment/connection/log_cart_request';
 
     /**
      * @var ScopeConfigInterface
@@ -100,6 +101,15 @@ class SpingoConnectionConfigProvider implements SpingoConnectionConfigProviderIn
     {
         return (string)$this->scopeConfig->getValue(
             self::CANCEL_URL,
+            ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
+            $storeId
+        );
+    }
+
+    public function isLogCartRequest(int $storeId): bool
+    {
+        return (bool)$this->scopeConfig->getValue(
+            self::LOG_CART_REQUEST,
             ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
             $storeId
         );

@@ -58,6 +58,11 @@
                         <label>Cancel URL</label>
                         <config_path>spingo_payment/connection/cancel_url</config_path>
                     </field>
+                    <field id="log_cart_request" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Log cart request</label>
+                        <config_path>spingo_payment/connection/log_cart_request</config_path>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
                     <depends>
                         <field id="is_active">1</field>
                     </depends>

@@ -9,6 +9,6 @@ use Monolog\Logger;
 
 class ConnectionHandler extends Base
 {
-    protected $loggerType = Logger::ERROR;
+    protected $loggerType = Logger::NOTICE;
     protected $fileName = '/var/log/spingo/connection.log';
 }
