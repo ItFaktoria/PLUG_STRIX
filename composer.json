@@ -7,7 +7,7 @@
   },
   "description": "Spingo Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.4.0",
+  "version": "dev-1.4.1",
   "license": [
     "proprietary"
   ],
