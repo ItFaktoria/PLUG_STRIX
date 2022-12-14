@@ -1,0 +1,10 @@
+<?php
+
+use Spingo\SpingoFrontendUi\ViewModel\SpingoProductViewButtonViewModel;
+
+/** @var SpingoProductViewButtonViewModel $viewModel */
+$viewModel = $block->getViewModel();
+?>
+<div class="spingo-payment__product_button">
+    <img class="spingo-payment__img" src="<?= $viewModel->getButtonImage(); ?>" alt="<?= $viewModel->getImageTitle(); ?>"/>
+</div>
