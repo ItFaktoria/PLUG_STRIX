@@ -6,6 +6,7 @@ namespace Spingo\SpingoFrontendUi\Provider;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\View\Asset\Repository;
 use Magento\Store\Model\StoreManagerInterface;
 use Spingo\SpingoApi\Api\SpingoConnectionConfigProviderInterface;
 
@@ -21,12 +22,19 @@ class SpingoCheckoutConfigProvider implements ConfigProviderInterface
      */
     private $storeManager;
 
+    /**
+     * @var Repository
+     */
+    private $assetRepository;
+
     public function __construct(
         SpingoConnectionConfigProviderInterface $spingoConnectionConfigProvider,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+        Repository $assetRepository
     ) {
         $this->spingoConnectionConfigProvider = $spingoConnectionConfigProvider;
         $this->storeManager = $storeManager;
+        $this->assetRepository = $assetRepository;
     }
 
     public function getConfig(): array
@@ -42,7 +50,8 @@ class SpingoCheckoutConfigProvider implements ConfigProviderInterface
         return [
             'payment' => [
                 'spingoPayment' => [
-                    'isActive' => $isActive
+                    'isActive' => $isActive,
+                    'logoSrc' => $this->assetRepository->getUrl('Spingo_SpingoFrontendUi::images/logo_spingo.png')
                 ]
             ]
         ];

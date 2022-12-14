@@ -8,7 +8,8 @@ define(
         'use strict';
         return Component.extend({
             defaults: {
-                template: 'Spingo_SpingoFrontendUi/spingo_payment'
+                template: 'Spingo_SpingoFrontendUi/spingo_payment',
+                logoSrc: window.checkoutConfig.payment.spingoPayment.logoSrc,
             },
             afterPlaceOrder: function () {
                 redirectOnSuccessAction.redirectUrl = url.build('spingo/form');
