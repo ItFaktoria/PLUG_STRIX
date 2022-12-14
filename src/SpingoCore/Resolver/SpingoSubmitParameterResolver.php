@@ -53,11 +53,15 @@ class SpingoSubmitParameterResolver implements SpingoSubmitParameterResolverInte
             ],
             [
                 'name' => 'FKT_FPAY_IN_URL.URL_RETURN',
-                'value' => $this->urlBuilder->getUrl($this->spingoConnectionConfigProvider->getDirectUrl($storeId)),
+                'value' => $this->urlBuilder->getDirectUrl(
+                    $this->spingoConnectionConfigProvider->getReturnUrl($storeId)
+                )
             ],
             [
                 'name' => 'FKT_FPAY_IN_URL.URL_CANCEL',
-                'value' => $this->urlBuilder->getUrl($this->spingoConnectionConfigProvider->getDirectUrl($storeId)),
+                'value' => $this->urlBuilder->getDirectUrl(
+                    $this->spingoConnectionConfigProvider->getCancelUrl($storeId)
+                )
             ],
             [
                 'name' => 'FKT_FPAY_IN_URL.SEND_NOTIFY',
