@@ -113,4 +113,11 @@ class SpingoConnectionConfigProviderTest extends TestCase
         $cancelUrl = $this->spingoConnectionConfigProvider->getCancelUrl(1);
         $this->assertIsString($cancelUrl);
     }
+    public function testIsLogCartRequest(): void
+    {
+        $this->scopeConfig->expects($this->once())->method('getValue')->willReturn('1');
+        $this->encryptor->expects($this->never())->method('decrypt');
+        $isLogCartRequest = $this->spingoConnectionConfigProvider->isLogCartRequest(1);
+        $this->assertIsBool($isLogCartRequest);
+    }
 }

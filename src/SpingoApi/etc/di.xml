@@ -9,4 +9,5 @@
     <preference for="Spingo\SpingoApi\Api\SpingoOrderChangeStatusServiceInterface" type="Spingo\SpingoCore\Service\SpingoOrderChangeStatusService"/>
     <preference for="Spingo\SpingoApi\Api\SpingoPaymentGrandTotalThresholdServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentGrandTotalThresholdService"/>
     <preference for="Spingo\SpingoApi\Api\SpingoPaymentCurrencyCheckServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentCurrencyCheckService"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoPaymentVatIdCheckServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentVatIdCheckService"/>
 </config>
