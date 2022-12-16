@@ -11,6 +11,7 @@ use Magento\Payment\Model\Method\Adapter;
 use Magento\Quote\Model\Quote;
 use Spingo\SpingoApi\Api\SpingoPaymentCurrencyCheckServiceInterface;
 use Spingo\SpingoApi\Api\SpingoPaymentGrandTotalThresholdServiceInterface;
+use Spingo\SpingoApi\Api\SpingoPaymentVatIdCheckServiceInterface;
 
 class IsSpingoPaymentActiveObserver implements ObserverInterface
 {
@@ -24,12 +25,19 @@ class IsSpingoPaymentActiveObserver implements ObserverInterface
      */
     private $spingoPaymentCurrencyCheckService;
 
+    /**
+     * @var SpingoPaymentVatIdCheckServiceInterface
+     */
+    private $spingoPaymentVatIdCheckService;
+
     public function __construct(
         SpingoPaymentGrandTotalThresholdServiceInterface $spingoPaymentGrandTotalThresholdService,
-        SpingoPaymentCurrencyCheckServiceInterface $spingoPaymentCurrencyCheckService
+        SpingoPaymentCurrencyCheckServiceInterface $spingoPaymentCurrencyCheckService,
+        SpingoPaymentVatIdCheckServiceInterface $spingoPaymentVatIdCheckService
     ) {
         $this->spingoPaymentGrandTotalThresholdService = $spingoPaymentGrandTotalThresholdService;
         $this->spingoPaymentCurrencyCheckService = $spingoPaymentCurrencyCheckService;
+        $this->spingoPaymentVatIdCheckService = $spingoPaymentVatIdCheckService;
     }
 
     public function execute(Observer $observer): void
@@ -50,6 +58,9 @@ class IsSpingoPaymentActiveObserver implements ObserverInterface
         $isAvailableCurrency = $this->spingoPaymentCurrencyCheckService->isAvailableByCurrency(
             (string)$quote->getCurrency()->getQuoteCurrencyCode()
         );
-        $checkResult->setData('is_available', $isAvailableTotal && $isAvailableCurrency);
+        $isAvailableVatId = $this->spingoPaymentVatIdCheckService->isAvailableByVatId(
+            (string)$quote->getBillingAddress()->getVatId()
+        );
+        $checkResult->setData('is_available', $isAvailableTotal && $isAvailableCurrency && $isAvailableVatId);
     }
 }

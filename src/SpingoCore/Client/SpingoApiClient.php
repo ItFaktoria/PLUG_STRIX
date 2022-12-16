@@ -73,7 +73,7 @@ class SpingoApiClient implements SpingoApiClientInterface
                 ]
             );
 
-            return $result->getBody()->getContents();
+            return (string)$result->getBody()->getContents();
         } catch (ClientException | GuzzleException | NoSuchEntityException $e) {
             $this->logger->notice($e->getMessage());
             throw new SpingoApiException(
