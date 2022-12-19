@@ -52,16 +52,17 @@ build:
   only:
     - tags
   artifacts:
-        name: "spingo-magento-2-$CI_COMMIT_TAG"
-        expire_in: never
-        when: always
-        paths:
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoAdminUi
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoApi
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoCore
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoFrontendUi
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoWebApi
-          - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/README.md
+    name: "spingo-magento-2-$CI_COMMIT_TAG"
+    expire_in: never
+    when: always
+    paths:
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoAdminUi
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoApi
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoCore
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoFrontendUi
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/$MODULE_PATH/SpingoWebApi
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/README.md
+      - $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/build/composer.json
 
 deploy:
   tags:
