@@ -41,12 +41,21 @@ class SpingoOrderChangeStatusService implements SpingoOrderChangeStatusServiceIn
     {
         /** @var Order $order */
         $order = $this->orderRepository->get($orderId);
+        if ($order->isCanceled()) {
+            return;
+        }
         $orderComment = $this->spingoNotifyStatusMessageResolver->resolve($statusCode);
         $orderStatus = $this->spingoNotifyOrderStatusProvider->provide($statusCode);
-        $order->addCommentToStatusHistory($orderComment, $orderStatus);
-        $order->setStatus($orderStatus);
-        $order->setState($orderStatus);
-        if ($orderStatus === Order::STATE_CLOSED) {
+        $order->addCommentToStatusHistory($orderComment);
+        if ($order->getTotalDue() > 0 && $orderStatus !== Order::STATE_CANCELED) {
+            $order->setTotalPaid($order->getTotalDue());
+            $order->setBaseTotalPaid($order->getBaseTotalDue());
+            $order->setStatus($orderStatus);
+            $order->setState($orderStatus);
+        }
+        if ($orderStatus === Order::STATE_CANCELED) {
+            $order->setStatus($orderStatus);
+            $order->setState($orderStatus);
             $order->cancel();
         }
         $this->orderRepository->save($order);
