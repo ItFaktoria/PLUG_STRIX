@@ -18,7 +18,7 @@ class SpingoNotifyOrderStatusProvider implements SpingoNotifyOrderStatusProvider
             case '401':
             case '501':
             case '502':
-                return Order::STATE_CLOSED;
+                return Order::STATE_CANCELED;
             default:
                 return null;
         }
