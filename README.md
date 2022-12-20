@@ -22,9 +22,9 @@ Moduł dodaje następujące funkcjonalności
 
 ## Instalacja
 #### Kopiując pliki na serwer
-1. Pobierz najnowszą wersję z [tu link][external-link-1]
+1. Pobierz najnowszą wersję [pobierz][external-link-1]
 2. Rozpakuj pobrany plik zip
-3. Skopiuj zawartość do katalogu `app/code/Spingo` w głownym katalogu instalacja Magento2. **Jeżeli katalog nie istnieje - utwórz go.**
+3. Skopiuj zawartość katalogu `src` do katalogu `app/code/Spingo` w głownym katalogu instalacja Magento2. **Jeżeli katalog nie istnieje - utwórz go.**
 
 Po instalacji z poziomu konsoli uruchom:
 * bin/magento module:enable Spingo_SpingoAdminUi Spingo_SpingoApi Spingo_SpingoCore Spingo_SpingoFrontendUi Spingo_SpingoWebApi

@@ -2,12 +2,13 @@
   "name": "spingo/magento2-payment-method",
   "require": {
     "php": "~7.1||~7.3||~8.1",
+    "magento/framework": "*",
     "guzzlehttp/guzzle": "*",
     "ext-json": "*"
   },
   "description": "Spingo Magento2 Payment Method",
   "type": "magento2-module",
-  "version": "dev-1.4.5",
+  "version": "dev-1.4.6",
   "license": [
     "proprietary"
   ],
