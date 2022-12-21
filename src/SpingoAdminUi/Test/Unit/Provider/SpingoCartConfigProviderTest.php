@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Spingo\SpingoAdminUi\Test\Unit\Provider;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
 use Spingo\SpingoAdminUi\Provider\SpingoCartConfigProvider;
 
@@ -23,14 +22,8 @@ class SpingoCartConfigProviderTest extends TestCase
 
     protected function setUp(): void
     {
-        $objectManager = new ObjectManager($this);
         $this->scopeConfig = $this->createMock(ScopeConfigInterface::class);
-        $this->spingoCartConfigProvider = $objectManager->getObject(
-            SpingoCartConfigProvider::class,
-            [
-                'scopeConfig'=> $this->scopeConfig
-            ]
-        );
+        $this->spingoCartConfigProvider = new SpingoCartConfigProvider($this->scopeConfig);
     }
 
     public function testGetMinOrderTotal(): void

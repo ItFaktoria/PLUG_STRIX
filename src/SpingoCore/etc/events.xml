@@ -3,4 +3,7 @@
     <event name="sales_order_payment_place_end">
         <observer name="spingo_set_order_status" instance="Spingo\SpingoCore\Observer\AfterPlaceOrderSetOrderStatusObserver"/>
     </event>
+    <event name="payment_method_is_active">
+        <observer name="spingo_is_active" instance="Spingo\SpingoCore\Observer\IsSpingoPaymentActiveObserver"/>
+    </event>
 </config>

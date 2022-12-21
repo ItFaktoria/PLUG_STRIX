@@ -10,7 +10,6 @@ class SpingoNotifyStatusMessageResolver implements SpingoNotifyStatusMessageReso
 {
     public function resolve(string $statusCode): string
     {
-        $message = '';
         switch ($statusCode) {
             case '200':
                 $message = (string)__('SPINGO - [%1] Positive decision.', $statusCode);

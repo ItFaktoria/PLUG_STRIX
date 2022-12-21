@@ -6,9 +6,7 @@ namespace Spingo\SpingoAdminUi\Test\Unit\Provider;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use PHPUnit\Framework\TestCase;
-use Spingo\SpingoAdminUi\Provider\SpingoCartConfigProvider;
 use Spingo\SpingoAdminUi\Provider\SpingoConnectionConfigProvider;
 
 class SpingoConnectionConfigProviderTest extends TestCase
@@ -30,15 +28,11 @@ class SpingoConnectionConfigProviderTest extends TestCase
 
     protected function setUp(): void
     {
-        $objectManager = new ObjectManager($this);
         $this->scopeConfig = $this->createMock(ScopeConfigInterface::class);
         $this->encryptor = $this->createMock(EncryptorInterface::class);
-        $this->spingoConnectionConfigProvider = $objectManager->getObject(
-            SpingoConnectionConfigProvider::class,
-            [
-                'scopeConfig'=> $this->scopeConfig,
-                'encryptor' => $this->encryptor
-            ]
+        $this->spingoConnectionConfigProvider = new SpingoConnectionConfigProvider(
+            $this->scopeConfig,
+            $this->encryptor
         );
     }
 
