@@ -2,7 +2,7 @@ variables:
   RUNNER_TAG: 'ci-v2'
   STATIC_TEST: 'true'
   UNIT_TEST: 'true'
-  INTEGRATION_TEST: 'false'
+  INTEGRATION_TEST: 'true'
   INSTALL_STRIX_CI_MODULE: 'true'
   MODULE_PATH: src
   RUN_ON_TAGS: 'false'
