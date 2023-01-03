@@ -56,10 +56,14 @@ class IsSpingoPaymentActiveObserver implements ObserverInterface
         $methodInstance = $observer->getData('method_instance');
         /** @var Quote $quote */
         $quote = $observer->getData('quote');
-        $storeId = (int)$quote->getStoreId();
-        if ($methodInstance->getCode() !== 'spingo_payment' || $checkResult->getData('is_available') === false) {
+        if (
+            $quote === null ||
+            $methodInstance->getCode() !== 'spingo_payment' ||
+            $checkResult->getData('is_available') === false
+        ) {
             return;
         }
+        $storeId = (int)$quote->getStoreId();
         $isAvailableTotal = $this->spingoPaymentGrandTotalThresholdService->isAvailableByConfigurationThreshold(
             (float)$quote->getGrandTotal(),
             $storeId
