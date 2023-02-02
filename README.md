@@ -39,6 +39,9 @@ Po instalacji z poziomu konsoli uruchom:
 4. Sekcja **Spingo**
 5. Aby zapisać wprowadzone zmiany należy wcisnąć przycisk **Save config**.
 
+#### UWAGA
+Po zmianie dowolnej wartości ze względów bezpieczeństwa, w konfiguracji należy podać aktualny **klucz API** lub **klucz API Sanbox**
+
 ### Opcje ustawień
 #### Główne ustawienia
 | Parameter |                            |
@@ -63,6 +66,12 @@ Po instalacji z poziomu konsoli uruchom:
 |-------------------------------|-------------------------------------------------------------------------------------------------------------|
 | Minimalna wartość zamówienia  | Minimalna wartość zamówienia, przy której opcja płatności Spingo będzie widoczna w podsumowaniu zamówienia  |
 | Maksymalna wartość zamówienia | Maksymalna wartość zamówienia, przy której opcja płatności Spingo będzie widoczna w podsumowaniu zamówienia |
+
+#### Ustawienia produktu
+| Parameter                           |                                                                                    |
+|-------------------------------------|------------------------------------------------------------------------------------|
+| Adres URL Bannera produktowego      | Adres URL, na który klient zostanie przekierowany po klinkęciu w banner produktowy |
+| Prześlij obraz bannera produktowego | Wgrywanie obrazka wyświetlanego na karcie produktu                                 |
 
 ## Koszyk
 Metoda płatności Spingo - odrocz płatność wyświetli się w podsumowaniu zamówienia, gdy zostaną spełnione następujące warunki:

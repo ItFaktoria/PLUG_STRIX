@@ -26,7 +26,7 @@
                         <config_path>spingo_payment/connection/is_send_notification</config_path>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     </field>
-                    <field id="api_key" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <field id="api_key" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Api key</label>
                         <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                         <config_path>spingo_payment/connection/api_key</config_path>
@@ -34,7 +34,7 @@
                             <field id="is_sandbox">0</field>
                         </depends>
                     </field>
-                    <field id="sandbox_api_key" translate="label" type="password" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <field id="sandbox_api_key" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Sandbox Api key</label>
                         <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                         <config_path>spingo_payment/connection/sandbox_api_key</config_path>
@@ -76,6 +76,22 @@
                     <field id="max_order_total" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Maximum Order Total</label>
                         <config_path>spingo_payment/cart/max_order_total</config_path>
+                    </field>
+                    <depends>
+                        <field id="is_active">1</field>
+                    </depends>
+                </group>
+                <group id="product" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product</label>
+                    <field id="product_banner_url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Banner URL</label>
+                        <config_path>spingo_payment/product/banner_url</config_path>
+                    </field>
+                    <field id="product_banner_image" translate="label" type="image" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Banner Upload Image</label>
+                        <backend_model>Spingo\SpingoAdminUi\Model\Config\Backend\Image</backend_model>
+                        <base_url type="media">spingo/product_banner/</base_url>
+                        <config_path>spingo_payment/product/product_banner_image</config_path>
                     </field>
                     <depends>
                         <field id="is_active">1</field>
