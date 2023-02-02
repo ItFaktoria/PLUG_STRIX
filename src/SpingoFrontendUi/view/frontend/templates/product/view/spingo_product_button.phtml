@@ -4,7 +4,12 @@ use Spingo\SpingoFrontendUi\ViewModel\SpingoProductViewButtonViewModel;
 
 /** @var SpingoProductViewButtonViewModel $viewModel */
 $viewModel = $block->getViewModel();
+$image = $viewModel->getBannerImage();
 ?>
+<?php if ($image !== null): ?>
 <div class="spingo-payment__product_button">
-    <img class="spingo-payment__img" src="<?= $viewModel->getButtonImage(); ?>" alt="<?= $viewModel->getImageTitle(); ?>"/>
+    <a href="<?= $viewModel->getBannerUrl(); ?>">
+        <img class="spingo-payment__img" src="<?= $image; ?>" alt="<?= $viewModel->getImageTitle(); ?>"/>
+    </a>
 </div>
+<?php endif;
