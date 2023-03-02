@@ -73,6 +73,7 @@ deploy:
         - MAGENTO_VERSION: ['m245p1', 'm244p2', 'm243p3', 'm242', 'm241', 'm240', 'm237p3', 'm236', 'm235p2']
   image: gitlab.strix.app:5051/gitlab-ci/magento-ci-images/ci-deployer:6.9
   variables:
+    GIT_CLONE_PATH: $CI_BUILDS_DIR/$CI_CONCURRENT_ID/$CI_PROJECT_PATH/$MAGENTO_VERSION
     GIT_STRATEGY: none
   needs:
     - publish
