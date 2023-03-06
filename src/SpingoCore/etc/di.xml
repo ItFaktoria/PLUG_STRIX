@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="SpingoPayment" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="string">spingo_payment</argument>
+            <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form</argument>
+            <argument name="infoBlockType" xsi:type="string">SpingoPaymentInfo</argument>
+            <argument name="valueHandlerPool" xsi:type="object">SpingoValueHandlerPool</argument>
+            <argument name="commandPool" xsi:type="object">SpingoCommandPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoPaymentInfo" type="Magento\Payment\Block\ConfigurableInfo">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="methodCode" xsi:type="string">spingo_payment</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">SpingoConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">SpingoConfig</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoConfig" type="Magento\Payment\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="string">spingo_payment</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">SpingoSubmitCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoSubmitCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="requestBuilder" xsi:type="object">SpingoSubmitRequest</argument>
+            <argument name="handler" xsi:type="object">SpingoResponseHandlerComposite</argument>
+            <argument name="transferFactory" xsi:type="object">Spingo\SpingoCore\Gateway\Http\TransferFactory</argument>
+            <argument name="validator" xsi:type="object">Spingo\SpingoCore\Gateway\Validator\SpingoApiResponseValidator</argument>
+            <argument name="client" xsi:type="object">Spingo\SpingoCore\Gateway\Http\SpingoClient</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoSubmitRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="transaction" xsi:type="string">Spingo\SpingoCore\Gateway\Request\SpingoApiSubmitRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SpingoResponseHandlerComposite" type="Magento\Payment\Gateway\Response\HandlerChain">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="spingo_api" xsi:type="string">Spingo\SpingoCore\Gateway\Response\SpingoApiResponseHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ConnectionLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="error" xsi:type="object">Spingo\SpingoCore\Logger\ConnectionHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Spingo\SpingoCore\Client\SpingoApiClient">
+        <arguments>
+            <argument name="logger" xsi:type="object">ConnectionLogger</argument>
+        </arguments>
+    </type>
+</config>

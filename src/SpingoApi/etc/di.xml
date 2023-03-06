@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Spingo\SpingoApi\Api\SpingoConnectionConfigProviderInterface" type="Spingo\SpingoAdminUi\Provider\SpingoConnectionConfigProvider"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoCartConfigProviderInterface" type="Spingo\SpingoAdminUi\Provider\SpingoCartConfigProvider"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoProductConfigProviderInterface" type="Spingo\SpingoAdminUi\Provider\SpingoProductConfigProvider"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoSubmitParameterResolverInterface" type="Spingo\SpingoCore\Resolver\SpingoSubmitParameterResolver"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoApiClientInterface" type="Spingo\SpingoCore\Client\SpingoApiClient"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoNotifyStatusMessageResolverInterface" type="Spingo\SpingoCore\Resolver\SpingoNotifyStatusMessageResolver"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoNotifyOrderStatusProviderInterface" type="Spingo\SpingoCore\Provider\SpingoNotifyOrderStatusProvider"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoOrderChangeStatusServiceInterface" type="Spingo\SpingoCore\Service\SpingoOrderChangeStatusService"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoPaymentGrandTotalThresholdServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentGrandTotalThresholdService"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoPaymentCurrencyCheckServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentCurrencyCheckService"/>
+    <preference for="Spingo\SpingoApi\Api\SpingoPaymentVatIdCheckServiceInterface" type="Spingo\SpingoCore\Service\SpingoPaymentVatIdCheckService"/>
+</config>

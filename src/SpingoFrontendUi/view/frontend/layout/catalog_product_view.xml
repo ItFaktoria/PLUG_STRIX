@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block name="spingo.button" template="Spingo_SpingoFrontendUi::product/view/spingo_product_button.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Spingo\SpingoFrontendUi\ViewModel\SpingoProductViewButtonViewModel</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

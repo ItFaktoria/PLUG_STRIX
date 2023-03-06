@@ -1,0 +1,37 @@
+{
+  "name": "spingo/magento2-payment-method",
+  "require": {
+    "php": "~7.1||~7.3||~8.1",
+    "magento/framework": "*",
+    "guzzlehttp/guzzle": "*",
+    "ext-json": "*"
+  },
+  "description": "Spingo Magento2 Payment Method",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "src/SpingoAdminUi/registration.php",
+      "src/SpingoApi/registration.php",
+      "src/SpingoCore/registration.php",
+      "src/SpingoFrontendUi/registration.php",
+      "src/SpingoWebApi/registration.php"
+    ],
+    "psr-4": {
+      "Spingo\\SpingoAdminUi\\": "src/SpingoAdminUi",
+      "Spingo\\SpingoApi\\": "src/SpingoApi",
+      "Spingo\\SpingoCore\\": "src/SpingoCore",
+      "Spingo\\SpingoFrontendUi\\": "src/SpingoFrontendUi",
+      "Spingo\\SpingoWebApi\\": "src/SpingoWebApi"
+    }
+  },
+  "archive" : {
+    "exlude": [
+      ".gitlab-ci.yml",
+      ".gitattributes"
+    ]
+  }
+}
