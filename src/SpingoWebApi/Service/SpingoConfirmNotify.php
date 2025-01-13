@@ -36,11 +36,11 @@ class SpingoConfirmNotify implements SpingoConfirmNotifyInterface
         $this->spingoOrderChangeStatusService = $spingoOrderChangeStatusService;
     }
 
-    public function confirm(string $idNotify, array $items): string
+    public function confirm(string $IdNotify, array $Items): string
     {
         $applicationNumber = '';
         $statusCode = '';
-        foreach ($items as $item) {
+        foreach ($Items as $item) {
             if ($item->getSymbol() === 'ApplicationNumber') {
                 $applicationNumber = $item->getValue();
             }
